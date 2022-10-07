@@ -37,6 +37,7 @@ module.exports = {
                         beaconUrl 'https://bf64693eaq.bf.dynatrace.com/mbeacon'
                     }
                     userOptIn true
+					debug.agentLogging true
                 }
             }
         }
