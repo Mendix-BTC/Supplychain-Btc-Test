@@ -33,11 +33,10 @@ module.exports = {
             configurations {
                 defaultConfig {
                     autoStart {
-                        applicationId 'ad9074f3-1835-4b38-81b8-33d520097471'
+                        applicationId '58815d53-3d4b-4273-a994-25b19edd5c3b'
                         beaconUrl 'https://bf64693eaq.bf.dynatrace.com/mbeacon'
                     }
                     userOptIn true
-					debug.agentLogging true
                 }
             }
         }
@@ -47,7 +46,7 @@ module.exports = {
         // Those configs are copied 1:1
         config : `
         <key>DTXApplicationID</key>
-        <string>ad9074f3-1835-4b38-81b8-33d520097471</string>
+        <string>58815d53-3d4b-4273-a994-25b19edd5c3b</string>
         <key>DTXBeaconURL</key>
         <string>https://bf64693eaq.bf.dynatrace.com/mbeacon</string>
         <key>DTXLogLevel</key>
