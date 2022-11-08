@@ -1,12 +1,11 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-apply from: "../node_modules/@dynatrace/react-native-plugin/files/plugin.gradle", to: buildscript
     ext {
         buildToolsVersion = "30.0.2"
         minSdkVersion = 21
-        compileSdkVersion = 30
-        targetSdkVersion = 30
+        compileSdkVersion = 31
+        targetSdkVersion = 31
         kotlin_version = "1.4.21"
         excludeAppGlideModule = true
         playServicesVersion = "17+"
@@ -25,7 +24,6 @@ apply from: "../node_modules/@dynatrace/react-native-plugin/files/plugin.gradle"
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.0.2'
-		classpath 'com.dynatrace.tools.android:gradle-plugin:8.+'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         apply from: file("./mendixnative-release/mendix.gradle"); applyMendixClassPaths(project)
 
@@ -36,8 +34,22 @@ apply from: "../node_modules/@dynatrace/react-native-plugin/files/plugin.gradle"
 
 allprojects {
     repositories {
+        exclusiveContent {
+            filter {
+                includeGroup "com.facebook.react"
+            }
+            forRepository {
+                maven {
+                    url "$rootDir/../node_modules/react-native/android"
+                }
+            }
+        }
         google()
-        mavenCentral()
+        mavenCentral {
+            content {
+                excludeGroup("com.facebook.react")
+            }
+        }
         maven { url "https://www.jitpack.io" }
         maven {
             url "$rootDir/../node_modules/react-native/android"
@@ -58,18 +70,5 @@ allprojects {
         // Backwards compatibility for react-native-push-notifications dependency
         // Can be removed only if the project uses react-natice-push-notifications v7+
         set("firebaseMessagingVersion", "21.0.0")
-    }
-}
-
-apply from: "../node_modules/@dynatrace/react-native-plugin/files/dynatrace.gradle"
-apply plugin: 'com.dynatrace.instrumentation'
-dynatrace {
-    configurations {
-        sampleConfig {
-            autoStart {
-                applicationId '58815d53-3d4b-4273-a994-25b19edd5c3b'
-                beaconUrl 'https://bf64693eaq.bf.dynatrace.com/mbeacon'
-            }
-        }
     }
 }
