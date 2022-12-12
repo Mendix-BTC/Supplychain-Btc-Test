@@ -120,8 +120,5 @@
         "nativeOTA": {
             "enabled": false
         }
-    },
-    "appVersion": "1.0.13",
-    "buildNumber": 54,
-    "runtimeUrl": "https://supplychainmendixapp.tst-intern-belgiantrain.be/"
+    }
 }
