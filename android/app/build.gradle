@@ -62,12 +62,12 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.mendix.nativetemplate"
+        applicationId "supplychainbtctst.mobile.tst"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         missingDimensionStrategy "react-native-camera", "general"
-        versionCode 1
-        versionName "1.0"
+        versionCode 78
+        versionName "1.0.24"
         testBuildType System.getProperty("testBuildType", "debug")
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         resValue 'string', "CODE_PUSH_APK_BUILD_TIME", String.format("\"%d\"", System.currentTimeMillis())
